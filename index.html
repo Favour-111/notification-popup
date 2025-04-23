@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <title>Random Alert with Image</title>
+    <style>
+      #alertBox {
+        position: fixed;
+        bottom: 80px;
+        left: 20px;
+        background-color: #fdcecd;
+        color: #000000;
+        padding: 4px;
+        border-radius: 10px;
+        width: 290px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        display: none;
+        align-items: center;
+        gap: 3px;
+        z-index: 9999;
+        animation: fadeIn 0.4s ease-in-out;
+      }
+
+      #alertBox.show {
+        display: flex;
+      }
+
+      #alertImg {
+        width: 40px;
+        height: 40px;
+      }
+      .alert-img-cont {
+        background-color: white;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        width: 100px;
+        width: 70px;
+      }
+      #alertText {
+        color: #737373;
+        font-family: "Roboto", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        text-transform: capitalize;
+        font-style: normal;
+        font-variation-settings: "width" 100;
+        font-size: 11px;
+        span {
+          font-weight: 500;
+        }
+      }
+
+      #alertBox button {
+        background: transparent;
+        border: none;
+        color: rgb(48, 47, 47);
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .alert-cont {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+      }
+      .prod-name {
+        font-size: 12px;
+        font-weight: 700;
+        font-family: "Roboto", sans-serif;
+        font-optical-sizing: auto;
+        text-transform: uppercase;
+        span {
+          color: #737373;
+          font-family: "Roboto", sans-serif;
+          font-optical-sizing: auto;
+          font-weight: 300;
+          text-transform: capitalize;
+          font-style: normal;
+          font-variation-settings: "width" 100;
+          font-size: 11px;
+        }
+      }
+      .alrt {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        background-color: white;
+        border-radius: 10px;
+        height: 70px;
+        padding: 0 10px;
+        width: 195px !important;
+      }
+      .time {
+        font-size: 12px;
+        font-weight: light;
+        font-family: "Roboto", sans-serif;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="alertBox">
+      <div class="alert-cont">
+        <div class="alert-img-cont">
+          <img
+            id="alertImg"
+            src="https://media.discordapp.net/attachments/1341110641632739422/1362024034421965031/PRODUCT_PAGE_TALLOW_BALM_LUMINENCE_7.png?ex=680a1dba&is=6808cc3a&hm=ad6db71a8547f114bc6eeba72c4f3fd8cc43f38e0e4091ca8cd52f0ddb9048e6&=&format=webp&quality=lossless&width=782&height=782"
+            alt="Profile Image"
+          />
+        </div>
+        <div class="alrt">
+          <span id="alertText">Obaloluwa from <span>UK , Us</span></span>
+          <div class="prod-name"><span>bought: </span> tallow bam</div>
+          <div class="time">3 minutes ago</div>
+        </div>
+      </div>
+      <button onclick="hideAlert()">×</button>
+    </div>
+
+    <script>
+      const names = [
+        { name: "Marcela Kastlova", country: "UK", state: "Wales" },
+        { name: "Alina Pankratz", country: "US", state: "Florida" },
+        { name: "Zhenhong Hu", country: "Czech", state: "Prague" },
+        { name: "CHIU MING LUI", country: "US", state: "Texas" },
+        { name: "Uinise Lelenoa", country: "UK", state: "Ireland" },
+        { name: "Ellie McGuirk", country: "Czech", state: "Pilsen" },
+        { name: "Rhea Paula Visto", country: "US", state: "New York" },
+        { name: "Tereza Mackova", country: "UK", state: "Scotland" },
+        { name: "McKenna Ragis", country: "Czech", state: "Moravia" },
+        { name: "Dragna Perovic", country: "UK", state: "England" },
+        { name: "Dustin Simon", country: "US", state: "California" },
+        { name: "Preethi Singh", country: "Czech", state: "Bohemia" },
+        { name: "Monika Cisaiova", country: "UK", state: "Wales" },
+        { name: "Naomi Smith", country: "US", state: "Illinois" },
+        { name: "Olga Solorzano", country: "US", state: "Texas" },
+        { name: "Christie BRUBAKER", country: "Czech", state: "Prague" },
+        { name: "Renata Torok", country: "UK", state: "Ireland" },
+        { name: "Angie Garcia", country: "US", state: "Florida" },
+        { name: "Jona Bese", country: "Czech", state: "Pilsen" },
+        { name: "Erin Refslang", country: "UK", state: "Scotland" },
+        { name: "Marci Carlyon", country: "US", state: "New York" },
+        { name: "Zoey Dolzan", country: "Czech", state: "Moravia" },
+        { name: "Salima Brioua", country: "UK", state: "England" },
+        { name: "Luke Bickle", country: "US", state: "California" },
+        { name: "Connie Wagner", country: "Czech", state: "Bohemia" },
+        { name: "Midge Dinou", country: "UK", state: "Ireland" },
+        { name: "Sergey Khashchuk", country: "US", state: "Illinois" },
+        { name: "Tyra Beck", country: "Czech", state: "Prague" },
+        { name: "Anna Hartl", country: "UK", state: "Wales" },
+        { name: "Kethleen Lee", country: "US", state: "Florida" },
+        { name: "Betzabe Valle", country: "Czech", state: "Moravia" },
+        { name: "Christina Koller", country: "UK", state: "England" },
+        { name: "Marek Hetmanowski", country: "US", state: "Texas" },
+        { name: "Errol Attridge", country: "Czech", state: "Bohemia" },
+        { name: "Sonja Banzenbock", country: "UK", state: "Scotland" },
+        { name: "Hector Chavez", country: "US", state: "New York" },
+      ];
+
+      let shownNames = [];
+      let intervals = [5000, 7000, 4000]; // initial fixed times
+      let intervalIndex = 0;
+      function showAlert(person) {
+        const box = document.getElementById("alertBox");
+        const text = document.getElementById("alertText");
+        const time = box.querySelector(".time");
+
+        text.innerHTML = `${person.name} from <strong>${person.country}, ${person.state}</strong>`;
+        time.textContent = "just now";
+
+        box.classList.add("show");
+      }
+
+      function hideAlert() {
+        document.getElementById("alertBox").classList.remove("show");
+      }
+
+      function getRandomPerson() {
+        if (shownNames.length === names.length) {
+          shownNames = [];
+        }
+
+        let available = names.filter((p) => !shownNames.includes(p.name));
+        let randomIndex = Math.floor(Math.random() * available.length);
+        let selected = available[randomIndex];
+        shownNames.push(selected.name);
+        return selected;
+      }
+
+      function scheduleNextAlert() {
+        const delay =
+          intervalIndex < intervals.length
+            ? intervals[intervalIndex]
+            : Math.floor(Math.random() * 6000) + 3000; // 3s to 9s random
+
+        intervalIndex++;
+
+        setTimeout(() => {
+          const person = getRandomPerson();
+          showAlert(person);
+
+          setTimeout(() => {
+            hideAlert();
+            scheduleNextAlert();
+          }, 4000); // auto-hide after 3s
+        }, delay);
+      }
+
+      // Start the loop
+      scheduleNextAlert();
+    </script>
+  </body>
+</html>
